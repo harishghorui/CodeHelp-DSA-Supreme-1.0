@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+// Inheritance (Single-Level) -->>
 class Animal {
 public:
   int age;
