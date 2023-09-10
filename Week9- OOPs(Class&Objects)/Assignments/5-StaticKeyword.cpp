@@ -5,14 +5,15 @@ class abc {
     public:
     static int x, y;
 
-    //abc() : x(0) , y(0) {}
+    // abc() : x(0) , y(0) {} // initializing failed
+    // bcoz static are only created once
 
     static void print() {
         cout << x << " " << y << " " << endl;
     }
 };
 
-int abc::x;
+int abc::x; // declaring static variables
 int abc::y;
 
 int main() {

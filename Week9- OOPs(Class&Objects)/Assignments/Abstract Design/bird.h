@@ -1,4 +1,4 @@
-#if !defined(BIRD_H)
+#if !defined(BIRD_H) // its used bcoz if included bird.h again n again it will consider only 1time
 #define BIRD_H
 #include <iostream>
 using namespace std;

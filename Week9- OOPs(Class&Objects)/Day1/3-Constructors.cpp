@@ -80,7 +80,7 @@ int main() {
   Animal* mahesh = new Animal(15, "tiger"); // Constructor3
 
   Animal a;
-  Animal b = a; // Constructor4
+  Animal b = a; // Constructor4-->> copy constructor gets called
   Animal c(b); // alternate way to call copy constructor
 
   // Destructor-->> 

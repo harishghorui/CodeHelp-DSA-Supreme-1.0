@@ -11,7 +11,7 @@ class Base {
     // ~Base() {
     //     cout << "Base Dtor" << endl;
     // }
-    // Without virtual Dtor, Derived Dtor is not called
+    // Without virtual Dtor, Derived/child Dtor is not called
 
     virtual ~Base() {
         cout << "Base Dtor" << endl;
