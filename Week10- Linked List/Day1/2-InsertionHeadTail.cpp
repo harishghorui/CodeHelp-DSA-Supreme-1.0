@@ -12,7 +12,7 @@ class Node {
     }
 };
 
-void insertHead(Node* &head, Node* &tail, int data) {
+void insertAtHead(Node* &head, Node* &tail, int data) {
     if(head == NULL) {
         Node* newNode = new Node(data);
         head = newNode;
@@ -55,10 +55,10 @@ int main() {
     Node* head = NULL;
     Node* tail = NULL;
 
-    insertHead(head, tail, 6);
-    insertHead(head, tail, 7);
-    insertHead(head, tail, 8);
-    insertHead(head, tail, 9);
+    insertAtHead(head, tail, 6);
+    insertAtHead(head, tail, 7);
+    insertAtHead(head, tail, 8);
+    insertAtHead(head, tail, 9);
 
     //tail insertion-->>
     insertAtTail(head, tail, 4);
