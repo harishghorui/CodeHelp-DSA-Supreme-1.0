@@ -21,33 +21,57 @@ void printLL(Node* &head) {
     cout << endl << endl;
 }
 
-void reverseLL(Node* &reversed) {
+Node* findMiddleNode(Node* &head) {
+    Node* slow = head;
+    Node* fast = head->next;
+
+    while(fast != NULL && fast->next != NULL) {
+        fast = fast->next->next;
+        slow = slow->next;
+    }
+    
+    return slow;
+}
+
+Node* reverseLL(Node* &head) {
     Node* prev = NULL;
-    Node* curr = reversed;
+    Node* curr = head;
     Node* forward = curr->next;
+
     while(curr != NULL) {
         forward = curr->next;
         curr->next = prev;
         prev = curr;
         curr = forward;
     }
-    reversed = prev;
+    //printLL(prev);
+    return prev;
 }
 
 bool checkPalindrome(Node* &first) {
-    Node* reversed = first;
-    reverseLL(reversed);
-    
-    Node* temp = first;
-    while(temp != NULL) {
-        if(temp->data != reversed->data) {
-            return false;
-        }
-        temp = temp->next;
-        reversed = reversed->next;
+    Node* head = first;
+    if(head == NULL) {
+        cout << "Empty LL" << endl;
+        return false;
+    }
+    if(head->next == NULL) {
+        return true;
     }
 
+    Node* middle = findMiddleNode(head);
+    Node* reversedHead = middle->next;
+    
+    reversedHead = reverseLL(reversedHead);
+    
+    while(reversedHead != NULL) {
+        if(head->data != reversedHead->data) {
+            return false;
+        }
+        head = head->next;
+        reversedHead = reversedHead->next;
+    }
     return true;
+
 }
 
 int main() {
@@ -56,7 +80,7 @@ int main() {
     Node* third = new Node(4);
     Node* forth = new Node(4);
     Node* fifth = new Node(3);
-    Node* sixth = new Node(6);
+    Node* sixth = new Node(2);
     
     first->next = second;
     second->next = third;
@@ -65,7 +89,7 @@ int main() {
     fifth->next = sixth;
 
     printLL(first);
-    
+
     if(checkPalindrome(first)) {
         cout << "LL is a Palindrome" << endl;
     }
