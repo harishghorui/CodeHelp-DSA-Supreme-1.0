@@ -22,7 +22,9 @@ void printLL(Node* &head) {
 }
 
 Node* sort0s1s2sMethod2(Node* &head) {
-    //step1: create dummy
+    //Part1: Separate 0s, 1s & 2s Nodes in dummy Nodes-->>>
+
+    //step1: create dummy Nodes
     Node* zeroHead = new Node(-1);
     Node* zeroTail = zeroHead;
 
@@ -32,7 +34,7 @@ Node* sort0s1s2sMethod2(Node* &head) {
     Node* twoHead = new Node(-1);
     Node* twoTail = twoHead;
 
-    //step1: itterate and point to dummy nodes-->>>>
+    //step2: separate Nodes and point them to dummy nodes
     Node* curr = head;
     while(curr != NULL) {
         if(curr->data == 0) {
@@ -67,20 +69,21 @@ Node* sort0s1s2sMethod2(Node* &head) {
         }
     }
 
-    //Step2: delete dummy heads(-1)-->>>>
-    //Modify ones LL
+    //Part2: del faltu Nodes and join remaining sorted Nodes-->>>
+    //here will have sorted dummy nodes
+
+    //step1: del headNodes(-1)
     Node* temp = oneHead;
     oneHead = oneHead->next;
     temp->next = NULL;
     delete temp;
 
-    //modify twos LL
     temp = twoHead;
     twoHead = twoHead->next;
     temp->next = NULL;
     delete temp;
 
-    //step3: join dummy nodes-->>>>
+    //step2: join dummy Nodes
     if(oneHead != NULL) {
         zeroTail->next = oneHead;
         if(twoHead != NULL) {
@@ -91,8 +94,7 @@ Node* sort0s1s2sMethod2(Node* &head) {
         zeroTail->next = twoHead;
     }
 
-
-    //step4: remove zeroHead dummy node-->>>
+    //step3: del zeroHead(-1)
     temp = zeroHead;
     zeroHead = zeroHead->next;
     temp->next = NULL;
